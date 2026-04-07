@@ -1,6 +1,6 @@
 # ⚡ THE CLI-AI HYBRID ARSENAL — 2026 Definitive Edition
 
-> **Built for:** Syed — Multi-project operator + dual-degree student
+> **Built for:** <User> — Multi-project operator + dual-degree student
 > **System:** Linux (WSL/Ubuntu) · Gemini CLI user · Google One AI Pro subscriber
 > **Philosophy:** CLI-native · Local-first · Privacy-aware · Unix pipes · Plain text · Zero lock-in
 > **Last Updated:** 2026-04-06
@@ -96,7 +96,7 @@ Replaces `Ctrl+R` with a full-screen fuzzy search over your ENTIRE command histo
 | **Downside** | Sync requires either their hosted server or self-hosted |
 
 ### **tmux** — Session & Window Manager
-Every project gets its own tmux session. Switch between degree-cs, degree-math, pgmpy, and personal contexts in one keystroke. Sessions persist through disconnections.
+Every project gets its own tmux session. Switch between <topic-notebook>, degree-math, pgmpy, and personal contexts in one keystroke. Sessions persist through disconnections.
 
 | Detail | Value |
 |---|---|
@@ -149,7 +149,7 @@ All free, all open-source, all drop-in replacements.
 **Why it wins over everything else:**
 - Pure CLI: `task add` is faster than opening any app
 - Urgency formula: auto-ranks your tasks by due date, priority, age, and custom coefficients
-- Filters: `task project:degree-cs due.before:sunday priority:H list` — instant targeted views
+- Filters: `task project:<topic-notebook> due.before:sunday priority:H list` — instant targeted views
 - Reports: custom views for "what's due this week across ALL projects"
 - MCP bridge: connect to Gemini CLI for natural language task management
 - Export: `task export` → JSON → pipe to `llm` for AI-powered analysis
@@ -183,21 +183,21 @@ task dash
 **What it is:** A full-featured, CLI-first notebook system. Notes, bookmarks, todos, tagging, linking, search (full-text + fuzzy), encryption (GPG), Git-backed versioning, and multiple notebooks — all from the terminal. Files are plain Markdown.
 
 **Why it wins:**
-- **Capture in <2 seconds:** `nb a "Decided: use scipy.minimize for DAGMA optimizer"` — done
-- **Multiple notebooks:** One per context — `degree-cs`, `degree-math`, `pgmpy`, `personal`, `daily-logs`
+- **Capture in <2 seconds:** `nb a "Decided: use scipy.minimize for <Project-A> optimizer"` — done
+- **Multiple notebooks:** One per context — `<topic-notebook>`, `degree-math`, `pgmpy`, `personal`, `daily-logs`
 - **Search everything:** `nb search "eigenvalue" --all` — scans all notebooks
 - **Git-backed:** Every edit auto-committed with timestamp
 - **Encryption:** `nb add --encrypt` for sensitive content (GPG)
 - **Templates:** Define templates for daily logs, meeting notes, decision records
 - **Bookmarks:** Save and annotate URLs: `nb bookmark https://arxiv.org/abs/2401.12345`
-- **Linking:** Wikilink-style internal links: `[[degree-cs:linear-algebra-notes]]`
+- **Linking:** Wikilink-style internal links: `[[<topic-notebook>:linear-algebra-notes]]`
 - **Zero lock-in:** Plain `.md` files. Open them with Neovim, Obsidian, VS Code, or `cat`.
 
 **Notebook Structure:**
 
 ```
 ~/.nb/
-├── degree-cs/           # CS degree notes, assignments, insights
+├── <topic-notebook>/           # CS degree notes, assignments, insights
 ├── degree-math/         # Math degree notes, proofs, concepts
 ├── pgmpy/               # Project-specific decision log
 ├── projects/            # Other project notes
@@ -223,17 +223,17 @@ task dash
 **What it is:** A minimal CLI time tracker. Start a timer on a project+task, stop it, see reports. That's it. No bloat.
 
 ```bash
-watson start degree-cs "ML Homework Ch.7"
+watson start <topic-notebook> "ML Homework Ch.7"
 # ... work for 45 minutes ...
 watson stop
 
-watson start pgmpy "DAGMA CI fixes"
+watson start pgmpy "<Project-A> CI fixes"
 # ... work ...
 watson stop
 
 # Where did my week go?
 watson report --week
-# degree-cs: 12h 30m
+# <topic-notebook>: 12h 30m
 # degree-math: 8h 15m
 # pgmpy: 6h 45m
 # personal: 2h 10m
@@ -269,7 +269,7 @@ watson report --week
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/syed"]
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "~"]
     }
   }
 }
@@ -298,7 +298,7 @@ watson report --week
 | `extract_wisdom` | Extract insights from lectures, papers, videos | `cat lecture.txt \| fabric -p extract_wisdom` |
 | `create_quiz` | Generate practice questions from notes | `cat ml-notes.md \| fabric -p create_quiz` |
 | `summarize` | Concise summary of any content | `cat paper.txt \| fabric -p summarize` |
-| `create_next_steps` | Break project goals into actions | `echo "Ship DAGMA PR" \| fabric -p create_next_steps` |
+| `create_next_steps` | Break project goals into actions | `echo "Ship <Project-A> PR" \| fabric -p create_next_steps` |
 | `write_essay` | Draft essays from outlines | `cat outline.md \| fabric -p write_essay` |
 | `improve_writing` | Polish drafts | `cat draft.md \| fabric -p improve_writing` |
 | `analyze_claims` | Critically evaluate arguments | `cat argument.txt \| fabric -p analyze_claims` |
@@ -362,8 +362,8 @@ find ~/.nb/ -name "*.md" | xargs llm embed-multi notes -m 3-small --store
 llm similar notes -c "convergence guarantees for acyclic graph optimization"
 # Returns:
 # 1. ~/.nb/degree-math/eigenvalue-convergence.md (0.89)
-# 2. ~/.nb/pgmpy/dagma-optimizer-decision.md (0.85)
-# 3. ~/.nb/degree-cs/ml-optimization-notes.md (0.83)
+# 2. ~/.nb/pgmpy/<Project-A>-optimizer-decision.md (0.85)
+# 3. ~/.nb/<topic-notebook>/ml-optimization-notes.md (0.83)
 # → Found connections between your math notes and your code project!
 ```
 
@@ -430,11 +430,11 @@ fabric --model ollama/llama3.2:8b -p extract_wisdom < lecture.txt
 ```bash
 # Work on pgmpy
 cd ~/projects/pgmpy
-aider pgmpy/estimators/DAGMA.py pgmpy/tests/test_dagma.py
+aider pgmpy/estimators/<Project-A>.py pgmpy/tests/test_<Project-A>.py
 
 # In Aider:
 > "Refactor the optimization loop to use scipy.minimize with the LBFGS method. Update tests to match."
-# → Aider edits both files, runs tests, auto-commits: "refactor: use scipy.minimize LBFGS in DAGMA optimizer"
+# → Aider edits both files, runs tests, auto-commits: "refactor: use scipy.minimize LBFGS in <Project-A> optimizer"
 ```
 
 | Detail | Value |
@@ -460,9 +460,9 @@ faster-whisper lecture-recording.mp4 --model large-v3 --output_format txt > lect
 faster-whisper lecture.mp4 --model large-v3 --output_format txt \
   | tee lecture-raw.txt \
   | fabric -p extract_wisdom \
-  | tee >(nb degree-cs:add --title "Lecture 12 Wisdom") \
+  | tee >(nb <topic-notebook>:add --title "Lecture 12 Wisdom") \
   | fabric -p create_quiz \
-  | nb degree-cs:add --title "Lecture 12 Quiz"
+  | nb <topic-notebook>:add --title "Lecture 12 Quiz"
 ```
 
 | Detail | Value |
@@ -481,7 +481,7 @@ faster-whisper lecture.mp4 --model large-v3 --output_format txt \
 
 ```bash
 # Generate Anki cards from your notes using fabric + llm
-cat ~/.nb/degree-cs/neural-networks-ch7.md \
+cat ~/.nb/<topic-notebook>/neural-networks-ch7.md \
   | fabric -p create_quiz \
   | llm "Convert these Q&A pairs to Anki TSV import format. One card per line: front<TAB>back. No extra text." \
   > /tmp/anki-import.tsv
@@ -522,7 +522,7 @@ pdftotext paper.pdf - | llm "You are an expert reviewer. Analyze:
 2. What is the methodology?
 3. What are the key results?
 4. What are the limitations?
-5. How does this relate to DAGMA causal discovery?"
+5. How does this relate to <Project-A> causal discovery?"
 
 # 4. CITE: Use Zotero (free, open-source) to manage bibliography
 # Install Zotero browser connector, save papers with one click
@@ -685,10 +685,10 @@ tmux attach -t main || tmux new -s main
 nb daily-logs:show $(nb daily-logs:list --limit 1 --no-id --filenames)
 
 # 3. Start your first time block
-watson start degree-cs "ML Homework"
+watson start <topic-notebook> "ML Homework"
 
 # 4. When switching tasks:
-watson stop && watson start pgmpy "DAGMA refactor"
+watson stop && watson start pgmpy "<Project-A> refactor"
 ```
 
 ### The Study Session
@@ -701,9 +701,9 @@ nb search "neural networks" --all | head -20 | llm "Based on these past notes, g
 faster-whisper lecture-12.mp4 --model large-v3 --output_format txt > /tmp/lecture.txt
 
 # Process the transcript through the full pipeline
-cat /tmp/lecture.txt | fabric -p extract_wisdom | nb degree-cs:add --title "L12 — Neural Nets — Wisdom"
+cat /tmp/lecture.txt | fabric -p extract_wisdom | nb <topic-notebook>:add --title "L12 — Neural Nets — Wisdom"
 cat /tmp/lecture.txt | fabric -p create_quiz > /tmp/quiz.txt
-cat /tmp/quiz.txt | nb degree-cs:add --title "L12 — Neural Nets — Quiz"
+cat /tmp/quiz.txt | nb <topic-notebook>:add --title "L12 — Neural Nets — Quiz"
 
 # Generate Anki cards
 cat /tmp/quiz.txt | llm "Convert to TSV Anki format: front<TAB>back, one per line, no headers" > /tmp/anki-l12.tsv
@@ -713,14 +713,14 @@ cat /tmp/quiz.txt | llm "Convert to TSV Anki format: front<TAB>back, one per lin
 
 ```bash
 # Start the session
-watson start pgmpy "DAGMA implementation"
+watson start pgmpy "<Project-A> implementation"
 
 # Use Aider for deep code changes
 cd ~/projects/pgmpy
-aider pgmpy/estimators/DAGMA.py
+aider pgmpy/estimators/<Project-A>.py
 
 # Or use Gemini CLI for broader analysis
-gemini "Review the DAGMA test failures in CI and suggest fixes"
+gemini "Review the <Project-A> test failures in CI and suggest fixes"
 
 # Log your decision
 nb pgmpy:add "Decision: switched to scipy.minimize LBFGS because maintainer requested no custom optimizers. See PR #247 discussion."
@@ -739,7 +739,7 @@ pdftotext ~/research/papers/new-paper.pdf - | fabric -p summarize | nb research:
 llm similar notes -c "causal structure learning with acyclicity constraints" | head -5
 
 # Deep analysis
-pdftotext ~/research/papers/dagma-paper.pdf - | llm "Compare the methodology in this paper with the standard NOTEARS approach. What are the key innovations?"
+pdftotext ~/research/papers/<Project-A>-paper.pdf - | llm "Compare the methodology in this paper with the standard NOTEARS approach. What are the key innovations?"
 ```
 
 ### The Evening Wind-Down (2 minutes)
@@ -749,7 +749,7 @@ pdftotext ~/research/papers/dagma-paper.pdf - | llm "Compare the methodology in 
 watson stop
 
 # Quick capture of any loose thoughts
-nb add "Thought: the eigenvalue bound from math homework might help with the DAG constraint convergence proof in DAGMA..."
+nb add "Thought: the eigenvalue bound from math homework might help with the DAG constraint convergence proof in <Project-A>..."
 
 # The evening review runs automatically at 9PM
 # Or trigger manually:
@@ -767,7 +767,7 @@ nb add "Thought: the eigenvalue bound from math homework might help with the DAG
 watson report --week
 
 # 2. See what's overdue or at risk
-task project:degree-cs due.before:friday+7d list
+task project:<topic-notebook> due.before:friday+7d list
 task project:degree-math due.before:friday+7d list
 
 # 3. AI-powered weekly analysis
@@ -802,7 +802,7 @@ Done. Under 3 seconds. Timestamped, searchable, Git-tracked.
 ```bash
 # Requires: yt-dlp
 yt-dlp --extract-audio --audio-format mp3 "https://youtube.com/watch?v=..." -o lecture.mp3
-faster-whisper lecture.mp3 --model large-v3 --output_format txt | fabric -p extract_wisdom | nb degree-cs:add --title "YT Lecture — Topic"
+faster-whisper lecture.mp3 --model large-v3 --output_format txt | fabric -p extract_wisdom | nb <topic-notebook>:add --title "YT Lecture — Topic"
 ```
 
 ### Recipe: "What did I learn about X across everything?"
@@ -830,7 +830,7 @@ cat complex_file.py | fabric -p explain_code
 ### Recipe: "Break down this massive goal into tasks"
 
 ```bash
-echo "Goal: Complete DAGMA implementation, pass all CI tests, address all PR review comments, get merged into pgmpy main" \
+echo "Goal: Complete <Project-A> implementation, pass all CI tests, address all PR review comments, get merged into pgmpy main" \
   | fabric -p create_next_steps \
   | llm "Convert each step into a Taskwarrior 'task add' command with project:pgmpy and appropriate priorities" \
   | bash  # Auto-adds all tasks!
@@ -889,9 +889,9 @@ Create `~/.gemini/settings.json`:
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/home/syed/.nb",
-        "/home/syed/projects",
-        "/home/syed/research"
+        "~/.nb",
+        "~/projects",
+        "~/research"
       ]
     },
     "brave-search": {
@@ -907,9 +907,9 @@ Create `~/.gemini/settings.json`:
 
 **After this, you can say to Gemini CLI:**
 - *"What are my overdue tasks?"* → It queries Taskwarrior via MCP
-- *"Add a task: finish ML homework by Friday, high priority, degree-cs project"* → Adds to Taskwarrior
+- *"Add a task: finish ML homework by Friday, high priority, <topic-notebook> project"* → Adds to Taskwarrior
 - *"Read my latest pgmpy decision log"* → Reads from `~/.nb/pgmpy/`
-- *"Search the web for the latest DAGMA paper results"* → Uses Brave Search
+- *"Search the web for the latest <Project-A> paper results"* → Uses Brave Search
 
 ---
 
@@ -933,7 +933,7 @@ Create `~/.gemini/settings.json`:
 1. **API Keys:** Store in `~/.config/` with `chmod 600`. Never commit to Git. Use `pass` or `age` for encrypted storage.
 2. **Sensitive notes:** Use `nb add --encrypt` — GPG-encrypted at rest.
 3. **Sensitive processing:** Use `ollama` instead of cloud APIs for exam content, unpublished research, or personal data.
-4. **MCP scope:** Only declare directories in MCP config that you want AI to access. Never add `~/` or `/home/syed` — add specific subdirectories.
+4. **MCP scope:** Only declare directories in MCP config that you want AI to access. Never add `~/` or `~` — add specific subdirectories.
 5. **Fabric/llm with cloud:** Anything you pipe into `fabric` or `llm` (when using cloud models) IS sent to the API provider. Switch to `--model ollama/llama3.2:8b` for private content.
 6. **Git hygiene:** Add a global `.gitignore` that excludes API keys, `.env` files, and encrypted notes from accidental commits.
 
@@ -946,7 +946,7 @@ Create `~/.gemini/settings.json`:
 task add "description" project:X priority:H due:friday  # Add task
 task next                                                # What should I do now?
 task dash                                                # Custom dashboard
-task project:degree-cs due.before:friday list             # Filtered view
+task project:<topic-notebook> due.before:friday list             # Filtered view
 task 42 done                                             # Complete a task
 task export | llm "Prioritize these tasks"               # AI-powered prioritization
 ```
@@ -954,11 +954,11 @@ task export | llm "Prioritize these tasks"               # AI-powered prioritiza
 ### Notes
 ```bash
 nb a "Quick note"                           # Fastest capture
-nb degree-cs:add --title "Title" < file.md  # Add from file
+nb <topic-notebook>:add --title "Title" < file.md  # Add from file
 nb search "query" --all                     # Full-text search across all
-nb show degree-cs:42                        # Read a specific note
-nb edit degree-cs:42                        # Edit in $EDITOR
-nb list degree-cs/                          # List notes in notebook
+nb show <topic-notebook>:42                        # Read a specific note
+nb edit <topic-notebook>:42                        # Edit in $EDITOR
+nb list <topic-notebook>/                          # List notes in notebook
 ```
 
 ### AI
@@ -976,7 +976,7 @@ ollama run llama3.2:8b                      # Local/offline AI chat
 watson start project "task"                 # Start timer
 watson stop                                 # Stop timer
 watson report --week                        # Weekly report
-watson report --month --project degree-cs   # Monthly by project
+watson report --month --project <topic-notebook>   # Monthly by project
 ```
 
 ### Transcription

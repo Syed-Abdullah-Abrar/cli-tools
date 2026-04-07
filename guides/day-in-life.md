@@ -32,17 +32,17 @@ morning
 
 ## 📋 Top Tasks (by urgency)
 ID  Project      Pri  Due      Description
- 3  degree-cs     H   today    Submit ML Homework Ch.7
+ 3  <topic-notebook>     H   today    Submit ML Homework Ch.7
  7  degree-math   H   tomorrow Linear Algebra proof set #4
- 5  pgmpy         M   Wed      Fix DAGMA CI test failures
- 9  degree-cs     M   Thu      Read Paper: "Causal Discovery with Score Matching"
+ 5  pgmpy         M   Wed      Fix <Project-A> CI test failures
+ 9  <topic-notebook>     M   Thu      Read Paper: "Causal Discovery with Score Matching"
 12  personal      L   Fri      Reply to Prof. Ahmed's email
 
 ## ⏰ Overdue
 None! 🎉
 
 ## 📊 Time This Week
-degree-cs       2h 30m
+<topic-notebook>       2h 30m
 degree-math     1h 45m
 pgmpy           3h 10m
 
@@ -59,10 +59,10 @@ The linear algebra proof set is due tomorrow, so block time for it this afternoo
 
 ```bash
 # Start the timer. Watson is now tracking your time.
-ws degree-cs "ML Homework Ch.7"
+ws <topic-notebook> "ML Homework Ch.7"
 ```
 
-Output: `Starting project degree-cs, task ML Homework Ch.7 at 07:05`
+Output: `Starting project <topic-notebook>, task ML Homework Ch.7 at 07:05`
 
 You need to review some concepts before starting. You search your notes:
 
@@ -73,14 +73,14 @@ ns "backpropagation"
 
 Output:
 ```
-degree-cs:23  "Lecture 9 — Backprop — Wisdom"
-degree-cs:24  "Lecture 9 — Backprop — Quiz"
-degree-cs:18  "Ch.5 Notes — Chain Rule and Gradients"
+<topic-notebook>:23  "Lecture 9 — Backprop — Wisdom"
+<topic-notebook>:24  "Lecture 9 — Backprop — Quiz"
+<topic-notebook>:18  "Ch.5 Notes — Chain Rule and Gradients"
 ```
 
 ```bash
 # Read the wisdom note quickly
-nb degree-cs:show 23
+nb <topic-notebook>:show 23
 ```
 
 You realize you're fuzzy on the chain rule for matrix derivatives. Instead of re-reading the textbook, you ask:
@@ -101,7 +101,7 @@ seek "matrix calculus chain rule derivatives"
 Output:
 ```
 degree-math:41   "Lecture 14 — Matrix Differentiation"  (0.91)
-degree-cs:18     "Ch.5 Notes — Chain Rule and Gradients" (0.87)
+<topic-notebook>:18     "Ch.5 Notes — Chain Rule and Gradients" (0.87)
 degree-math:38   "Proof: Jacobian of Composed Functions"  (0.82)
 ```
 
@@ -116,7 +116,7 @@ Now you work on the homework for 90 minutes. During the work, a quick insight po
 
 ```bash
 # Capture it in under 3 seconds. Don't break flow.
-n "Insight: the Jacobian transpose in backprop is exactly the adjoint operator from linear algebra. Connection between degree-math L14 and degree-cs Ch.7"
+n "Insight: the Jacobian transpose in backprop is exactly the adjoint operator from linear algebra. Connection between degree-math L14 and <topic-notebook> Ch.7"
 ```
 
 ---
@@ -126,7 +126,7 @@ n "Insight: the Jacobian transpose in backprop is exactly the adjoint operator f
 ```bash
 # Stop the timer
 wp
-# Output: Stopping project degree-cs, task ML Homework Ch.7, started 1h 30m ago
+# Output: Stopping project <topic-notebook>, task ML Homework Ch.7, started 1h 30m ago
 
 # Mark the task as done
 t 3 done
@@ -151,7 +151,7 @@ You're in a lecture on "Variational Autoencoders." You have it recorded (audio f
 tmux switch -t cs
 
 # Process the entire lecture in one command
-process-lecture ~/recordings/lecture-13-vae.mp3 "Lecture 13 — Variational Autoencoders" degree-cs
+process-lecture ~/recordings/lecture-13-vae.mp3 "Lecture 13 — Variational Autoencoders" <topic-notebook>
 ```
 
 **What happens behind the scenes:**
@@ -159,7 +159,7 @@ process-lecture ~/recordings/lecture-13-vae.mp3 "Lecture 13 — Variational Auto
 2. `fabric -p extract_wisdom` pulls out key insights, mental models, and surprising facts
 3. `fabric -p study_notes` creates structured notes with definitions, intuitions, examples, and self-test questions
 4. `fabric -p create_quiz` generates practice questions
-5. Everything is saved to your `degree-cs` notebook with proper titles
+5. Everything is saved to your `<topic-notebook>` notebook with proper titles
 6. Anki flashcards are generated at `/tmp/anki-cards.tsv`
 
 **Output:**
@@ -171,9 +171,9 @@ process-lecture ~/recordings/lecture-13-vae.mp3 "Lecture 13 — Variational Auto
 🃏 Generating Anki cards...
 
 ✅ Done! Created:
-   📒 Lecture 13 — Variational Autoencoders — Wisdom  in degree-cs
-   📒 Lecture 13 — Variational Autoencoders — Study Notes  in degree-cs
-   📒 Lecture 13 — Variational Autoencoders — Quiz  in degree-cs
+   📒 Lecture 13 — Variational Autoencoders — Wisdom  in <topic-notebook>
+   📒 Lecture 13 — Variational Autoencoders — Study Notes  in <topic-notebook>
+   📒 Lecture 13 — Variational Autoencoders — Quiz  in <topic-notebook>
    🃏 Anki cards at /tmp/anki-cards.tsv
 
 Import Anki cards: Open Anki → File → Import → select /tmp/anki-cards.tsv
@@ -184,7 +184,7 @@ You open Anki, import the cards. You now have spaced repetition cards from today
 Quick check of the wisdom:
 
 ```bash
-nb degree-cs:show "Lecture 13 — Variational Autoencoders — Wisdom"
+nb <topic-notebook>:show "Lecture 13 — Variational Autoencoders — Wisdom"
 ```
 
 Output (abbreviated):
@@ -233,7 +233,7 @@ Key contributions:
 ...
 ```
 
-Now you want to see how this relates to your pgmpy DAGMA implementation:
+Now you want to see how this relates to your pgmpy <Project-A> implementation:
 
 ```bash
 seek "score matching causal structure learning continuous optimization DAG"
@@ -243,8 +243,8 @@ Output:
 ```
 research:12    "Summary: Causal Discovery Score Matching"    (0.94)
 pgmpy:8        "Decision: use continuous DAG constraint"     (0.88)
-pgmpy:3        "DAGMA paper notes — acyclicity formulation"  (0.86)
-degree-cs:9    "Lecture 7 — Structure Learning Methods"      (0.79)
+pgmpy:3        "<Project-A> paper notes — acyclicity formulation"  (0.86)
+<topic-notebook>:9    "Lecture 7 — Structure Learning Methods"      (0.79)
 degree-math:41 "Lecture 14 — Matrix Differentiation"         (0.71)
 ```
 
@@ -253,7 +253,7 @@ Five connections across four different notebooks, found in 2 seconds. Your entir
 You log a research insight:
 
 ```bash
-nb pgmpy:add "Research note: The Score Matching paper (2026) uses a similar continuous relaxation to DAGMA but with the score function instead of log-likelihood. Could potentially improve our optimizer. See: research:12, pgmpy:3"
+nb pgmpy:add "Research note: The Score Matching paper (2026) uses a similar continuous relaxation to <Project-A> but with the score function instead of log-likelihood. Could potentially improve our optimizer. See: research:12, pgmpy:3"
 ```
 
 ---
@@ -262,7 +262,7 @@ nb pgmpy:add "Research note: The Score Matching paper (2026) uses a similar cont
 
 ```bash
 # Quick email draft
-echo "Reply to Prof. Ahmed: thanks for the feedback on my causal discovery project. I've read the Score Matching paper he suggested. Ask if we can meet Thursday to discuss potential improvements to DAGMA implementation. Keep it professional but friendly." \
+echo "Reply to Prof. Ahmed: thanks for the feedback on my causal discovery project. I've read the Score Matching paper he suggested. Ask if we can meet Thursday to discuss potential improvements to <Project-A> implementation. Keep it professional but friendly." \
   | fabric -p write_email
 ```
 
@@ -274,14 +274,14 @@ Dear Prof. Ahmed,
 
 Thank you for recommending the "Causal Discovery with Score Matching" paper —
 I found the continuous optimization formulation particularly insightful,
-especially the comparison with the acyclicity constraint approach used in DAGMA.
+especially the comparison with the acyclicity constraint approach used in <Project-A>.
 
 Would you be available to meet on Thursday to discuss some potential improvements
-I've identified for the DAGMA implementation? I'd value your perspective on
+I've identified for the <Project-A> implementation? I'd value your perspective on
 integrating score-matching insights into the current codebase.
 
 Best regards,
-Syed
+<User>
 ```
 
 Copy, paste into your email client. Done. Mark the task:
@@ -333,7 +333,7 @@ t 7 done
 # Switch context
 tmux switch -t projects
 z pgm                     # zoxide jumps to ~/projects/pgmpy
-ws pgmpy "DAGMA CI fixes"
+ws pgmpy "<Project-A> CI fixes"
 
 # Check what needs doing
 t project:pgmpy list
@@ -342,7 +342,7 @@ t project:pgmpy list
 Output:
 ```
 ID  Pri  Due  Description
- 5   M   Wed  Fix DAGMA CI test failures
+ 5   M   Wed  Fix <Project-A> CI test failures
 14   L   Fri  Refactor optimizer to use scipy.minimize
 15   L   next Add NumPy/PyTorch backend parity tests
 ```
@@ -350,12 +350,12 @@ ID  Pri  Due  Description
 You start with Aider for the CI fix:
 
 ```bash
-aider pgmpy/estimators/DAGMA.py pgmpy/tests/test_dagma.py
+aider pgmpy/estimators/<Project-A>.py pgmpy/tests/test_<Project-A>.py
 ```
 
 Inside Aider:
 ```
-> The CI test test_dagma_linear is failing because the optimizer doesn't converge
+> The CI test test_<Project-A>_linear is failing because the optimizer doesn't converge
   for the 5-node test case. The convergence threshold is too tight. Relax the
   tolerance from 1e-8 to 1e-6 and add a max_iter parameter with default 1000.
   Update the test to use the new parameter.
@@ -363,22 +363,22 @@ Inside Aider:
 
 Aider edits both files, runs tests, and auto-commits:
 ```
-Applied edit to pgmpy/estimators/DAGMA.py
-Applied edit to pgmpy/tests/test_dagma.py
+Applied edit to pgmpy/estimators/<Project-A>.py
+Applied edit to pgmpy/tests/test_<Project-A>.py
 Running tests... ✅ All passed
-Commit: fix: relax DAGMA convergence tolerance and add max_iter parameter
+Commit: fix: relax <Project-A> convergence tolerance and add max_iter parameter
 ```
 
 Log the decision:
 
 ```bash
-nb pgmpy:add "Decision: Relaxed DAGMA convergence tolerance from 1e-8 to 1e-6. Reason: 5-node test case doesn't converge with tight tolerance due to numerical noise in the matrix exponential. Added max_iter=1000 as default. See commit: $(git log --oneline -1)"
+nb pgmpy:add "Decision: Relaxed <Project-A> convergence tolerance from 1e-8 to 1e-6. Reason: 5-node test case doesn't converge with tight tolerance due to numerical noise in the matrix exponential. Added max_iter=1000 as default. See commit: $(git log --oneline -1)"
 ```
 
 Run the full test suite:
 
 ```bash
-python -m pytest pgmpy/tests/test_dagma.py -v
+python -m pytest pgmpy/tests/test_<Project-A>.py -v
 ```
 
 All green. Check if there's anything from past decisions that's relevant to the next task (refactoring the optimizer):
@@ -390,8 +390,8 @@ nb pgmpy:search "optimizer"
 
 Output:
 ```
-pgmpy:3   "DAGMA paper notes — acyclicity formulation"
-pgmpy:5   "Decision: switched DAGMA to scipy optimizer"
+pgmpy:3   "<Project-A> paper notes — acyclicity formulation"
+pgmpy:5   "Decision: switched <Project-A> to scipy optimizer"
 pgmpy:8   "Decision: use continuous DAG constraint"
 pgmpy:14  "Research note: Score Matching paper uses similar relaxation"
 ```
@@ -431,9 +431,9 @@ Output:
 ## pgmpy — Project Status Update
 
 ### Progress
-- Fixed CI test failures for DAGMA estimator (convergence tolerance + max_iter)
+- Fixed CI test failures for <Project-A> estimator (convergence tolerance + max_iter)
 - Relaxed tolerance from 1e-8 to 1e-6 based on numerical analysis
-- All 12 DAGMA tests now passing
+- All 12 <Project-A> tests now passing
 - Read and annotated "Causal Discovery with Score Matching" paper — identified
   potential improvements to optimizer
 
@@ -448,7 +448,7 @@ Output:
 ### Next Steps
 1. Refactor optimizer to use scipy.minimize (due Wednesday)
 2. Add NumPy/PyTorch backend parity tests (due next week)
-3. Investigate score-matching insights for potential DAGMA improvement
+3. Investigate score-matching insights for potential <Project-A> improvement
 ```
 
 You save this for tomorrow:
@@ -472,14 +472,14 @@ Output:
 # 🌙 Evening Review — 2026-04-07
 
 ## ✅ Completed Today
-- Submit ML Homework Ch.7        (degree-cs)
+- Submit ML Homework Ch.7        (<topic-notebook>)
 - Linear Algebra proof set #4    (degree-math)
-- Fix DAGMA CI test failures     (pgmpy)
+- Fix <Project-A> CI test failures     (pgmpy)
 - Reply to Prof. Ahmed's email   (personal)
 
 ## ⏱ Time Today
-degree-cs       1h 30m  (ML homework)
-degree-cs       0h 45m  (lecture processing)
+<topic-notebook>       1h 30m  (ML homework)
+<topic-notebook>       0h 45m  (lecture processing)
 degree-math     2h 00m  (proof set)
 pgmpy           1h 20m  (CI fixes)
 Total:          5h 35m
@@ -487,14 +487,14 @@ Total:          5h 35m
 ## 🤖 AI Reflection
 
 ## ✅ Top Win
-Fixed the DAGMA CI failures AND connected the Score Matching paper insights to
+Fixed the <Project-A> CI failures AND connected the Score Matching paper insights to
 your existing codebase — this sets up the optimizer refactor nicely.
 
 ## ⚠️ At Risk
 Nothing overdue. The optimizer refactor (due Wednesday) needs starting tomorrow.
 
 ## 🎯 Tomorrow's #1 Priority
-Start the scipy.minimize refactor for DAGMA — you have the context fresh from
+Start the scipy.minimize refactor for <Project-A> — you have the context fresh from
 today's CI fix and paper reading.
 
 ## 💡 Observation

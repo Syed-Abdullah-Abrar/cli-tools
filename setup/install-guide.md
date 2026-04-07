@@ -179,7 +179,7 @@ npm install -g nb.sh 2>/dev/null || {
 }
 
 # Create your notebook structure
-nb notebooks add degree-cs
+nb notebooks add <topic-notebook>
 nb notebooks add degree-math
 nb notebooks add pgmpy
 nb notebooks add projects
@@ -561,11 +561,11 @@ chmod +x ~/scripts/rebuild-index.sh
 # Using cron (simpler)
 (crontab -l 2>/dev/null; cat << 'CRON'
 # Morning briefing at 7:00 AM
-0 7 * * * /home/syed/scripts/morning-briefing.sh >> /tmp/briefing.log 2>&1
+0 7 * * * ~/scripts/morning-briefing.sh >> /tmp/briefing.log 2>&1
 # Evening review at 9:00 PM
-0 21 * * * /home/syed/scripts/evening-review.sh >> /tmp/review.log 2>&1
+0 21 * * * ~/scripts/evening-review.sh >> /tmp/review.log 2>&1
 # Rebuild semantic index every Sunday at 2:00 AM
-0 2 * * 0 /home/syed/scripts/rebuild-index.sh >> /tmp/index.log 2>&1
+0 2 * * 0 ~/scripts/rebuild-index.sh >> /tmp/index.log 2>&1
 CRON
 ) | crontab -
 
@@ -587,7 +587,7 @@ cat >> ~/.bashrc << 'ALIASES'
 # --- Quick capture ---
 alias n="nb add"                                    # Quick note
 alias nd="nb daily-logs:add"                        # Daily log entry
-alias ncs="nb degree-cs:add"                        # CS note
+alias ncs="nb <topic-notebook>:add"                        # CS note
 alias nma="nb degree-math:add"                      # Math note
 alias ns="nb search --all"                          # Search all notes
 
@@ -626,7 +626,7 @@ reindex() { ~/scripts/rebuild-index.sh; }
 process-lecture() {
   local input="$1"
   local title="${2:-Lecture}"
-  local notebook="${3:-degree-cs}"
+  local notebook="${3:-<topic-notebook>}"
 
   echo "🎤 Transcribing..."
   faster-whisper "$input" --model large-v3 --output_format txt > /tmp/lecture-transcript.txt
@@ -767,9 +767,9 @@ cat > ~/.gemini/settings.json << 'MCP'
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/home/syed/.nb",
-        "/home/syed/projects",
-        "/home/syed/research"
+        "~/.nb",
+        "~/projects",
+        "~/research"
       ]
     }
   }
@@ -908,8 +908,8 @@ echo "Run 'morning' tomorrow to see your first AI briefing."
 After installation, do these to build muscle memory:
 
 - [ ] `td` — check your task dashboard
-- [ ] `ta "Read Chapter 8 of ML textbook" project:degree-cs priority:M due:wednesday` — add a real task
-- [ ] `ws degree-cs "Reading Ch.8"` — start timing
+- [ ] `ta "Read Chapter 8 of ML textbook" project:<topic-notebook> priority:M due:wednesday` — add a real task
+- [ ] `ws <topic-notebook> "Reading Ch.8"` — start timing
 - [ ] `n "First real note: started using CLI-AI Arsenal"` — capture a note
 - [ ] `echo "Explain backpropagation" | wisdom` — test AI pipeline
 - [ ] `echo "Explain gradient descent" | quiz` — test quiz generation
