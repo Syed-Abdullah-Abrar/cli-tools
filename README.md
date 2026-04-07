@@ -106,7 +106,7 @@ Every project gets its own tmux session. Switch between <topic-notebook>, degree
 | **Downside** | Learning curve for keybindings |
 
 ### **zoxide** — Intelligent Directory Navigation
-Learns your most-used directories. Type `z pgm` to jump to `~/projects/pgmpy/` from anywhere. No more `cd ../../path/to/dir`.
+Learns your most-used directories. Type `z <prj>` to jump to `~/projects/sub-project/` from anywhere. No more `cd ../../path/to/dir`.
 
 | Detail | Value |
 |---|---|
@@ -184,7 +184,7 @@ task dash
 
 **Why it wins:**
 - **Capture in <2 seconds:** `nb a "Decided: use scipy.minimize for <Project-A> optimizer"` — done
-- **Multiple notebooks:** One per context — `<topic-notebook>`, `degree-math`, `pgmpy`, `personal`, `daily-logs`
+- **Multiple notebooks:** One per context — `<topic-notebook>`, `degree-math`, `personal`, `daily-logs`
 - **Search everything:** `nb search "eigenvalue" --all` — scans all notebooks
 - **Git-backed:** Every edit auto-committed with timestamp
 - **Encryption:** `nb add --encrypt` for sensitive content (GPG)
@@ -277,7 +277,7 @@ watson report --week
 
 | Detail | Value |
 |---|---|
-| **Pricing** | Free tier (generous). Premium via your Google One AI Pro ($20/mo — already paying). |
+| **Pricing** | Free tier (generous). |
 | **Platforms** | Linux, macOS, Windows |
 | **Downside** | Requires internet for API calls (no offline mode) |
 
@@ -306,7 +306,7 @@ watson report --week
 | `create_command` | Natural language → bash command | `echo "find large files over 100MB" \| fabric -p create_command` |
 | `rate_content` | Evaluate quality of any content | `cat article.md \| fabric -p rate_content` |
 
-**Custom patterns for YOU** (create these in `~/.config/fabric/patterns/`):
+**Custom patterns** (create these in `~/.config/fabric/patterns/`):
 
 ```bash
 # ~/.config/fabric/patterns/daily_review/system.md
@@ -428,19 +428,18 @@ fabric --model ollama/llama3.2:8b -p extract_wisdom < lecture.txt
 **Role in the stack:** Deep code work on projects like pgmpy. Unlike Gemini CLI (general-purpose agent), Aider is optimized specifically for iterative code changes with Git tracking.
 
 ```bash
-# Work on pgmpy
-cd ~/projects/pgmpy
-aider pgmpy/estimators/<Project-A>.py pgmpy/tests/test_<Project-A>.py
+# Work
+aider project/<Project-A>.py pgmpy/tests/test_<Project-A>.py
 
 # In Aider:
 > "Refactor the optimization loop to use scipy.minimize with the LBFGS method. Update tests to match."
-# → Aider edits both files, runs tests, auto-commits: "refactor: use scipy.minimize LBFGS in <Project-A> optimizer"
+# → Aider edits both files, runs tests, auto-commits: "refactor: use X in <Project-A> optimizer"
 ```
 
 | Detail | Value |
 |---|---|
 | **Install** | `pip install aider-chat` |
-| **Pricing** | Free, open-source. BYOK (Google AI Pro key works). |
+| **Pricing** | Free, open-source. BYOK |
 | **Platforms** | Any system with Python + Git |
 | **Downside** | Token-heavy for large codebases. Choose models carefully for cost. |
 
@@ -600,7 +599,7 @@ Three auto-running scripts that tie everything together:
 echo "# 🌅 Morning Briefing — $(date +%Y-%m-%d)" > /tmp/briefing.md
 echo "" >> /tmp/briefing.md
 
-echo "## 📋 Today's Tasks (by urgency)" >> /tmp/briefing.md
+echo "## 📋 Today's Tasks (by urgency" >> /tmp/briefing.md
 task rc.verbose=nothing rc.report.dash.columns=project,priority,due.relative,description \
   rc.report.dash.filter="status:pending due.before:tomorrow+2d" \
   dash >> /tmp/briefing.md
