@@ -1021,12 +1021,7 @@ This stack is:
 - **100% local-first** — your data is on your machine, always
 - **100% open-source** (except Anki iOS app) — no vendor lock-in, ever
 - **AI-augmented at every layer** — from task prioritization to semantic note search to lecture processing
-- **Costs $0/month beyond your existing Google One AI Pro** — every tool is free, API costs covered by your subscription
 - **Reproducible** — `chezmoi` deploys your entire stack on any new machine in one command
 - **Private** — switch to Ollama for sensitive content, everything else is scoped and encrypted
 
-You're not using AI as a chatbot. You're using AI as an **operating system layer** that makes every CLI interaction intelligent.
-
----
-
-*This is a living document. Last major audit: 2026-04-06.*
+Don't use AI as a chatbot. Use AI as an **operating system layer** that makes every CLI interaction intelligent.
