@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **MIGRATION UPDATE (2026-04-30): The "Ultimate Stack"**
+> This guide originally referenced `nb` as the primary notebook tool. `nb` has now been completely deprecated and replaced with a unified **Tech-Goblet** (Obsidian) Hub-and-Spoke architecture.
+> All quick-capture aliases (`n`, `ncs`, `nma`) and daily routines (`morning`, `evening`) now write *directly* into `~/Tech-Goblet/wiki/`. This allows your AI agents (`gmobs`) to seamlessly synthesize your personal terminal thoughts alongside your web-captured articles in a single, flat Markdown brain.
+
 # 🌅 A Day In The Life — CLI-AI Arsenal in Action
 
 > This is a **realistic, minute-by-minute walkthrough** of how the entire stack flows together during a typical day. Every command is real. Every pipe is actual. Copy-paste any of this.

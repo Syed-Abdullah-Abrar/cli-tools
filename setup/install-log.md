@@ -41,3 +41,10 @@
 - Updated Gemini CLI `settings.json` with MCP capability for Taskwarrior and local search.
 
 **Status: Setup is completed!** All configurations and automation are fully applied to the system.
+
+## 2026-04-30: Tech-Goblet "Ultimate Stack" Migration
+- **Deprecated `nb`**: The standalone `nb` utility was completely stripped from the setup.
+- **Integrated `Tech-Goblet`**: The system now strictly uses the Hub-and-Spoke Obsidian vault (`~/Tech-Goblet/wiki`) as the unified brain.
+- **Aliases Remapped**: Quick capture aliases (`n`, `ncs`, `nma`) now use `tg-capture.sh` to append directly into `Meta/Inbox.md` and `Readings/College_Notes.md`.
+- **Scripts Migrated**: `morning-briefing.sh` and `evening-review.sh` now output logs to `Tech-Goblet/wiki/Daily/`.
+- **Semantic Search**: `seek` now crawls the entire Obsidian vault.
