@@ -68,6 +68,7 @@ This is the **Master Index** for your entire CLI-AI Arsenal. Every tool, every s
 | `neovim.md` | LazyVim, plugins, Gemini integration. |
 | `workflows.md` | Daily rituals, lecture processing, paper analysis, project status. |
 | `dotfiles.md` | GNU Stow architecture, GitHub backup, new machine restore. |
+| `tech-goblet.md` | Obsidian vault, Hub & Spoke model, ingestion pipeline, Delta Synthesis. |
 
 ---
 
