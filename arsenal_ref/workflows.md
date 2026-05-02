@@ -118,3 +118,25 @@ These all use `~/scripts/tg-capture.sh` as the backend.
 | `ncs "concept"` | `Readings/Self_Study.md` | `#cs` | Computer Science note |
 | `nma "formula"` | `Readings/Self_Study.md` | `#math` | Math note |
 | `ns "query"` | — | — | Alias for `seek` (semantic search) |
+
+---
+
+## 6. WSL-Windows Bridge
+Since you are on WSL, these tools bridge the gap between your terminal and your Windows ecosystem (Chrome, Google Docs, etc.).
+
+### `open` — Instant Browser/App Access
+**Trigger**: `open <URL_or_File>`
+**Example**: `open https://docs.google.com`
+
+**What it does**: Uses `powershell.exe` to launch the target in your default Windows application. This lets you stay in the terminal for deep work but jump to a browser for collaborative review instantly.
+
+### `win_dl` — The Download Pipeline
+**Location**: `~/Tech-Goblet/sources/win_dl` (Symlink to Windows Downloads)
+
+**What it does**: This folder mirrors your Windows `Downloads` folder. 
+**Workflow**: 
+1. Download a PDF or Markdown file in Windows Chrome.
+2. Run `gmobs` in your terminal.
+3. The AI engine will automatically see the file in `win_dl` and synthesize it into your knowledge base. 
+4. No manual copying required.
+
