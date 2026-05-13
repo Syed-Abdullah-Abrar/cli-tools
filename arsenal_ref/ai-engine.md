@@ -70,3 +70,13 @@ This instantly spawns a floating, semi-transparent bash shell directly over your
 **Scripts:** `~/scripts/morning-briefing.sh` and `~/scripts/evening-review.sh`
 
 Both scripts export your pending Taskwarrior queue and Watson time logs. They pipe the raw JSON directly to the `ai` alias. The AI analyzes your workload, flags risks, and generates a motivational priority list for the day. This output is automatically copied into `~/Tech-Goblet/wiki/Daily/`.
+
+---
+
+## 7. Gemini CLI & MCP Servers
+The Gemini CLI is configured to use the Model Context Protocol (MCP) to natively interact with your environment.
+**Config:** `~/.gemini/settings.json`
+
+### Active MCP Servers:
+1. **Filesystem**: Reads and writes files. Pointed strictly to the Hubs: `~/dev`, `~/brain`, and `~/.nb`.
+2. **Taskwarrior**: Reads and modifies your task queue. Uses a custom node wrapper (`~/scripts/taskwarrior-mcp-fix.js`) to dynamically fix a schema bug in the `mcp-server-taskwarrior` package, ensuring strict compatibility with the Gemini CLI.

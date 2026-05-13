@@ -51,3 +51,9 @@ Available columns include: `id`, `project`, `priority`, `due`, `start.active`, `
 
 ## 7. Connection to the AI Arsenal
 Every morning, your `morning-briefing.sh` script executes `task status:pending export`. It dumps your entire Taskwarrior database into a JSON blob, sends it to the MiniMax API via `ai-chat.py`, and asks the AI to recommend your #1 priority for the day. That recommendation is then logged into your Obsidian Tech-Goblet vault.
+
+## 8. MCP Server Integration (Gemini CLI)
+To allow AI agents (like the Gemini CLI) to natively read and modify your task list without raw bash execution, we use the Model Context Protocol (MCP).
+- **Package**: `mcp-server-taskwarrior`
+- **Fixer Script**: `~/scripts/taskwarrior-mcp-fix.js`
+- **Why a fixer script?**: The raw MCP package has a missing schema declaration (`"type": "object"`) that causes strict clients to reject its tools. The fixer script runs the server and dynamically injects the missing schema, ensuring 100% compatibility with the Gemini CLI.
