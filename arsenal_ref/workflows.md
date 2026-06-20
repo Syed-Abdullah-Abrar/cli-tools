@@ -4,7 +4,7 @@
 These are the automated workflows that tie your entire Arsenal together. They are shell functions and scripts that pipe data between Taskwarrior, Watson, the AI, and your Tech-Goblet knowledge base.
 
 All workflow scripts live in `~/scripts/` (backed up via GNU Stow in `~/.dotfiles/scripts/scripts/`).
-All workflow aliases/functions are defined in `~/.bash_aliases`.
+All workflow aliases/functions are defined in `~/.dotfiles/shell/aliases.sh` (sourced by both bash and zsh).
 
 ---
 

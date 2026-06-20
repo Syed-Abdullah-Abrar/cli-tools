@@ -58,6 +58,7 @@ When the OS reads `~/.bashrc`, it silently follows the symlink to `~/.dotfiles/b
 | Stow Module | Contents | Symlink Target |
 | :--- | :--- | :--- |
 | `bash` | `.bashrc`, `.bash_aliases` | `~/` |
+| `zsh` | `.zshrc`, `.zprofile` | `~/` |
 | `tmux` | `.tmux.conf` | `~/` |
 | `vim` | `.vimrc` | `~/` |
 | `neovim` | `.config/nvim/` (LazyVim) | `~/.config/` |
@@ -65,6 +66,11 @@ When the OS reads `~/.bashrc`, it silently follows the symlink to `~/.dotfiles/b
 | `taskwarrior` | `.taskrc`, `.task/hooks/` | `~/` |
 | `ai-agents` | `.agents/workflows/` | `~/` |
 | `scripts` | `scripts/` (all custom scripts) | `~/` |
+| `gemini` | `.gemini/settings.json` | `~/` |
+| `aider` | `.aider.conf.yml` | `~/` |
+| `atuin` | `.config/atuin/config.toml` | `~/.config/` |
+| `profile` | `.profile` | `~/` |
+| `shell/` | `env.sh`, `aliases.sh`, `functions.sh` | *(sourced, not stowed)* |
 
 ## 5. Daily Usage
 
@@ -111,7 +117,7 @@ git clone <your-tech-goblet-url> ~/Tech-Goblet
 ### Step 3: Deploy All Symlinks
 ```bash
 cd ~/.dotfiles
-stow bash tmux vim neovim starship taskwarrior ai-agents scripts
+stow bash zsh tmux vim neovim starship taskwarrior ai-agents scripts gemini aider atuin profile
 ```
 
 ### Step 4: Install Python/Go Tools
@@ -121,19 +127,44 @@ pip install td-watson llm fabric aider-chat
 
 ### Step 5: Set API Keys
 ```bash
-# Add to ~/.bashrc or set in your environment
-export OPENAI_API_KEY="your_minimax_key"
+cp ~/.dotfiles/secrets.env.template ~/.config/secrets.env
+chmod 600 ~/.config/secrets.env
+# Fill in your API keys
 ```
 
 ### Step 6: Rebuild Semantic Index
 ```bash
-source ~/.bashrc
+source ~/.zshrc
 reindex
 ```
 
 Your entire terminal environment is now fully restored.
 
-## 7. Common Stow Operations
+## 7. Shared Shell Architecture
+
+Both bash and zsh source from `~/.dotfiles/shell/` (NOT a stow module — sourced directly):
+
+```
+~/.dotfiles/shell/
+├── env.sh        — PATH exports, NVM, Bun, Atuin env, secrets
+├── aliases.sh    — all aliases and workflow functions
+└── functions.sh  — chrome(), d2pods(), and other standalone functions
+```
+
+Each shell module (bash, zsh) sources these shared files before running its own shell-specific tool initialization (starship init, zoxide init, atuin init).
+
+## 8. Zsh Migration Notes
+
+Zsh is now the default shell. Bash configs are preserved as fallback.
+
+Key differences from bash setup:
+- **starship**: `eval "$(starship init zsh)"` (not bash)
+- **zoxide**: `eval "$(zoxide init zsh)"` (not bash)
+- **atuin**: `eval "$(atuin init zsh)"` (not bash), no `bash-preexec.sh` needed
+- **NVM**: Works in zsh via same `nvm.sh` sourced in `shell/env.sh`
+- **HF CLI**: Zsh completion via `eval "$(hf completion --shell zsh)"`
+
+## 9. Common Stow Operations
 
 | Command | What It Does |
 | :--- | :--- |
@@ -142,7 +173,7 @@ Your entire terminal environment is now fully restored.
 | `cd ~/.dotfiles && stow -R bash` | **Restow** (unlink + relink, useful after restructuring) |
 | `cd ~/.dotfiles && stow */` | Link ALL modules at once |
 
-## 8. Adding a New Tool to Dotfiles
+## 10. Adding a New Tool to Dotfiles
 If you install a new tool (e.g., `alacritty`) and want to back up its config:
 
 ```bash

@@ -1,6 +1,6 @@
 # The Ultimate Stack: Master Architecture Reference
 
-*Last Updated:* 2026-05-02
+*Last Updated:* 2026-06-20
 
 This is the **Master Index** for your entire CLI-AI Arsenal. Every tool, every script, every alias, and every config file in your system is documented across the files in this directory. If you forget how something works, start here.
 

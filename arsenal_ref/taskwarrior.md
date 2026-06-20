@@ -10,7 +10,7 @@ Taskwarrior is a high-performance command-line task manager. In our "Ultimate St
 - **The Automagic Hook**: `~/.task/hooks/on-modify.py` (The bridge between Taskwarrior and Watson)
 
 ## 3. Core Aliases (How to use it)
-These are mapped in your `~/.bash_aliases`:
+These are mapped in `~/.dotfiles/shell/aliases.sh`:
 - `t` (or `task`): View all pending tasks.
 - `ta <description>`: Add a new task.
 - `td` (or `task dash`): View the **Custom Dashboard** (Urgent tasks only).

@@ -28,7 +28,7 @@ These are the tools that replace the ancient, ugly default Unix utilities with b
 ## 3. Zoxide — Smarter `cd`
 **What it does**: Learns your most-visited directories and lets you jump to them with a single keyword instead of typing full paths.
 
-**Initialized in**: `~/.bash_aliases` via `eval "$(zoxide init bash)"`
+**Initialized in**: `~/.dotfiles/shell/aliases.sh` (sourced by both bash and zsh) via `eval "$(zoxide init bash)"` or `eval "$(zoxide init zsh)"`
 
 ### How to Use
 | Command | What It Does |
@@ -61,7 +61,7 @@ Every time you `cd` into a directory, zoxide silently increments a "frecency" sc
 ## 5. eza — Modern `ls`
 **What it does**: Replaces the default `ls` with a colorful, icon-enabled, Git-aware file lister.
 
-### Your Aliases (from `~/.bash_aliases`)
+### Your Aliases (from `~/.dotfiles/shell/aliases.sh`)
 | Alias | Expands To | What It Does |
 | :--- | :--- | :--- |
 | `ls` | `eza --icons` | List files with colorful icons |

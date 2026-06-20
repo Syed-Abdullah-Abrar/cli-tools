@@ -45,7 +45,7 @@ This is not a list of tools. This is a **weapon system** — each component is c
 │                              │                                      │
 │  ┌─ LAYER 5: AUTOMATION & SYNC ───────────────────────────────┐   │
 │  │  Shell scripts + systemd timers (daily automation)           │   │
-│  │  chezmoi (dotfile sync across machines)                       │   │
+│  │  GNU Stow + GitHub (dotfile sync across machines)              │   │
 │  │  Syncthing (note + task sync — encrypted, P2P)               │   │
 │  └─────────────────────────────────────────────────────────────┘   │
 │                                                                     │
@@ -544,29 +544,27 @@ llm similar research -c "methods for enforcing DAG constraint in structure learn
 
 ## Layer 5: Automation & Sync
 
-### **chezmoi** — Dotfile Management
+### **GNU Stow + GitHub** — Dotfile Management
 
 > Your entire CLI stack configuration, version-controlled and reproducible across any machine.
 
 ```bash
-chezmoi init
-chezmoi add ~/.taskrc
-chezmoi add ~/.config/fabric/
-chezmoi add ~/.bashrc
-chezmoi add ~/.tmux.conf
-chezmoi add ~/.config/starship.toml
-chezmoi add ~/.config/atuin/config.toml
+cd ~/.dotfiles
+stow bash zsh tmux vim neovim starship taskwarrior ai-agents scripts gemini aider atuin profile
 
 # On a new machine:
-chezmoi init --apply https://github.com/yourusername/dotfiles.git
+git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+stow bash zsh tmux vim neovim starship taskwarrior ai-agents scripts gemini aider atuin profile
+cp secrets.env.template ~/.config/secrets.env && chmod 600 ~/.config/secrets.env
 # → Entire stack deployed in one command
 ```
 
 | Detail | Value |
 |---|---|
-| **Install** | `sh -c "$(curl -fsLS get.chezmoi.io)"` |
-| **Pricing** | Free, open-source (MIT) |
-| **Downside** | Yet another tool to learn. Worth it if you use multiple machines. |
+| **Install** | `sudo apt install stow` |
+| **Pricing** | Free, open-source (GPL) |
+| **Downside** | Manual symlink management. Worth it for simplicity and zero config drift. |
 
 ---
 
@@ -1021,7 +1019,7 @@ This stack is:
 - **100% local-first** — your data is on your machine, always
 - **100% open-source** (except Anki iOS app) — no vendor lock-in, ever
 - **AI-augmented at every layer** — from task prioritization to semantic note search to lecture processing
-- **Reproducible** — `chezmoi` deploys your entire stack on any new machine in one command
+- **Reproducible** — `GNU Stow` deploys your entire stack on any new machine in one command
 - **Private** — switch to Ollama for sensitive content, everything else is scoped and encrypted
 
 Don't use AI as a chatbot. Use AI as an **operating system layer** that makes every CLI interaction intelligent.
